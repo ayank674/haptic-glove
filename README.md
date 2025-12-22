@@ -18,9 +18,20 @@ This must be a group effort!!!
 
 - [ ] Select sensors to sense the finger movement and hand tracking/orientation.
     - There are quite some options for finger movements. Try to compare benefits and disadvantages of each:
-        - Hall Effect Sensor
-        - Potentiometer
-        - A Flex sensor
+        - Hall Effect Sensor  
+              - Would be small and streamlined  
+              - Very cool  
+              - Hall effect sensors could interfer with other Hall effect sensors nearby (would need to test various magnet strengths)  
+              - Would need to be calibrated in order to output accurate distance readings  
+              - Potentially good options: [https://www.allegromicro.com/en/products/sense/linear-and-angular-position/linear-sensors-1d/a1324-5-6](https://www.allegromicro.com/en/products/sense/linear-and-angular-position/linear-sensors-1d/a1324-5-6)
+        - Potentiometer  
+              - Probably the most reliable option  
+              - Would need some way to mechanically turn potentiometer with finger movement  
+              - Not as cool as Hall effect sensors  
+              - Potentially good option: [https://www.digikey.com/en/products/detail/tt-electronics-bi/P091S-QC15BR50K/2408861?gclsrc=aw.ds&gad_source=1&gad_campaignid=20243136172&gbraid=0AAAAADrbLljAaYyrH2StYB2OtgEJ8E_fF&gclid=CjwKCAiA9aPKBhBhEiwAyz82J6oq35BpvMt4HSuEcbuBFEe52bV97d_MmbQ3v2_BS-f8GoTKQrzsoRoCMi0QAvD_BwE](https://www.digikey.com/en/products/detail/tt-electronics-bi/P091S-QC15BR50K/2408861?gclsrc=aw.ds&gad_source=1&gad_campaignid=20243136172&gbraid=0AAAAADrbLljAaYyrH2StYB2OtgEJ8E_fF&gclid=CjwKCAiA9aPKBhBhEiwAyz82J6oq35BpvMt4HSuEcbuBFEe52bV97d_MmbQ3v2_BS-f8GoTKQrzsoRoCMi0QAvD_BwE)
+        - A Flex sensor  
+              - Would be the smallest option (could be put inside of or even woven into glove)  
+              - Known to be unreliable and difficult to work with  
     - The hand tracking might require some sophisticated sensor. Possible a combination of gyroscope and accelerometer. I'm not quite sure (would appreciate if someone does deep research on this).
     - Based on the selection of the sensor, you'd have to figure if a custom PCB is needed or an overkill for this. Try to talk with person selecting the MCU as he'd know what connections are neccessary.
 
