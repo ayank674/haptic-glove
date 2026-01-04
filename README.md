@@ -6,6 +6,11 @@ A smart glove which tracks hand and finger movement. This movement could be used
 
 Design/Planning stage.
 
+## Important Updates
+
+- I've ordered the [A1324LUA-T](https://www.allegromicro.com/en/products/sense/linear-and-angular-position/linear-sensors-1d/a1324-5-6) sensor. I chose it particulary due to linear nature (it is easier to measure distance in this case as our analog output would be linear. We might need some modelling of magnetic flux with radial distance though).
+- I honestly had no idea to select correct magnets. I thought hit and trial would be better in this case as there's not much informtaion about what magnet strength to use and how it would be at 3mm distance (this is distance between magnet and sensor we'd have). Ideally, we want it to be around 500G at this distance for reliable reading. I chose a [N35](https://www.digikey.com/en/products/detail/radial-magnets-inc/8193/555328?s=N4IgTCBcDaIDoBcAEg4AgCwDYCcBaAjAAwFo4ByAIiALoC%2BQA) after doing calculations using my limited knowledge of magnetic fluxes.
+
 ## TODO Tasks
 
 While I'm providing a starter information on each of these, remember to do your own reasearch and point out anything stupid I might have included. Also, feel free to go beyond the points include things you find are better or needed for this project.
