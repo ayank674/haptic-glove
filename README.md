@@ -8,6 +8,8 @@ Design/Planning stage.
 
 ## Important Updates
 
+- We're now working with a lab (Controls Systems) to use our glove as an input for their robotic arm. The lab is trying to find optimal way to represent a grab. They'll use our data as features for their model. We're also adding extra pressure sensors to accomodate their goal of researching optimal grab function/model.
+- We're using ESP32 for prototyping purposes as it is faster to write new code and get started with. It is also decently fast for our purposes as well as has in built bluetooth module.
 - We've tested the [A1324LUA-T](https://www.allegromicro.com/en/products/sense/linear-and-angular-position/linear-sensors-1d/a1324-5-6) sensor.
 - I have re-ordered the [N35](https://www.digikey.com/en/products/detail/radial-magnets-inc/8193/555328?s=N4IgTCBcDaIDoBcAEg4AgCwDYCcBaAjAAwFo4ByAIiALoC%2BQA) magnets.
 - I also ordered the [Accelerometer](https://www.digikey.com/en/products/detail/adafruit-industries-llc/3886/10709725) sensor. This would be used to track the hand position and orientation of it. It communicates with the I2C protocol.
@@ -19,7 +21,15 @@ While I'm providing a starter information on each of these, remember to do your 
 
 This must be a group effort!!!
 
-- [ ] Select a MCU and Bluetooth Serial
+- [ ] Calibrate Sensors
+    - Hall-Effect Sensors: We'll be CADing a two arm hinge design to turn the joint at several angles and then measure the sensor output at that point. We'll using a servo to turn the hinge at several outputs and store the mappings of sensor value at that angle. I'm attaching a design for it. We need adjustable placeholder clamps so we can fit sensors of different dimensions on it. Another good design principle would be to make 0.5mm indentation marks on the arms so we can asjust it to different distances while testing. Also make sure the hinge hole is compatiable with the servo motor using. I'll be writing the software code this break helpful in capturing the data and rotating servo. After collecting the data, we'll need to use linear regression/ML model to create a function that best fits our test angles with the captured sensor reading. Here's the idea sketch of my design: ![Design](images/calibrator-design.jpg)
+
+    - Potentiometer: Pretty much same as Hall Effect sensors but use potentiometer on one arm and stick your spool/spring/tape to other arm at appropriate distance. [Here's](https://www.youtube.com/watch?v=1ZJNX8JCDOc) a good example on how our spool could look like. You can come up with some newer and interesting designs as well if you can!
+
+    - Gyroscope and Acceleromoter: The good thing is we don't need to fit in/process our sensor data for this one. The raw data should be good as long as sensor is calibrated good enough. You can turn your hand into a circle in 3 different planes and map the two axes data of those plane. They should also form a circle is sensor is calibrated good enough. For gyroscope reading, rotate it at a constant torque and you should get almost constant value for that axis if calibrated right.
+
+
+- [x] Select a MCU and Bluetooth Serial
     - A Lightweight development board with space constraints as well as low power consumption.
     - A Bluetooth Serial module to communicate with the host computer (your Laptop). This would not be needed if using boards like ESP32 which have bluetooth antenna built in.
 
@@ -49,10 +59,6 @@ This must be a group effort!!!
     - The hand tracking might require some sophisticated sensor. Possible a combination of gyroscope and accelerometer. I'm not quite sure (would appreciate if someone does deep research on this).
     - Based on the selection of the sensor, you'd have to figure if a custom PCB is needed or an overkill for this. Try to talk with person selecting the MCU as he'd know what connections are neccessary.
 
-- [ ] Once the magnets arrive, model the hall effect sensor readings to the finger position. We'd need some kind of mathematical model to create a mapping for it. You can either use a machine learning model or just a simple quadratic or cubic model. Choose this or any other option that we find to be feasible for real time processing and has decent accuracy.
-      
-- [ ] To place the potentiometer on the hand, we'll need to create some kind of CAD and attach it to maybe a rolling spring. The more it spins, the more our hand would be considered bent. [Here's](https://www.youtube.com/watch?v=1ZJNX8JCDOc) a good example on how our spool could look like. You can come up with some newer and interesting designs as well if you can!
-
-- [ ] Select a simulation software to convert our sensor information into something tangible on the host screen. There might be a lot of physics simulation softwares. Main task would be to find how to interact with it. You can build your own simulation as well if you feel (but i won't recommend as it is not worth rn)
+- [ ] Select a simulation software to convert our sensor information into something tangible on the host screen. There might be a lot of physics simulation softwares. Main task would be to find how to interact with it. You can build your own simulation as well if you feel (but i won't recommend as it is not worth rn). This is the least in priority rn as we're just using the data for robotic arm from lab now. Someone could talk to the lab supervisor and get to know what form of data it wants.
 
 - [ ] Try to document the process so we can just keep a record of what's happening. You can update this doc explaining your decision and why you choose one thing over other. Overall, just keep everyone in the team updated to make sure all of us have equal understanding and ownership of this thing
